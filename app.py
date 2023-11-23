@@ -6,8 +6,15 @@ import seaborn as sb
 
 def main() :
     st.header('경찰청 인천광역시경찰청_관서별 5대범죄 112신고건수 현황')
-    df=pd.read_csv('C:\Users\40005\Documents\GitHub\Streamlit-Crime\data\crime.csv')
-    st.dataframe(df)
+
+    if st.checkbox('보기'):
+        df=pd.read_csv('./data/crime.csv', encoding='euc-kr')
+        st.dataframe(df)
+
+    st.subheader('통계데이터 확인하기')
+
+    if st.checkbox('더보기') :
+        st.dataframe(df.describe())
 
 if __name__ == '__main__' :
     main()
