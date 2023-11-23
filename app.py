@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sb
 
 def main() :
-    st.header('경찰청 인천광역시경찰청_관서별 5대범죄 112신고건수 현황')
+    st.title('경찰청 인천광역시경찰청_관서별 5대범죄 112신고건수 현황')
 
     if st.checkbox('보기'):
         df=pd.read_csv('./data/crime.csv', encoding='euc-kr')
