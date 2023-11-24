@@ -11,7 +11,7 @@ if platform.system() == 'Linux':
 
 
 def main() :
-    st.title('경찰청 112신고건수 현황')
+    st.title('경찰청 범죄 발생 지역별 통계')
 
     menu=['Home','EDA','ML']
 
@@ -24,8 +24,7 @@ def main() :
         run_eda_app()
     elif choice == menu[2] :
         pass
-    elif choice == menu[3] :
-        pass
+
 
    
 
