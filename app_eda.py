@@ -22,11 +22,13 @@ def run_eda_app () :
     
 
      st.info('지역별 신고건수')
-
+     
      fixed_column = '범죄 분류'
-     selected_region = st.selectbox('지역', df.columns[1:])
+     selected_region = st.selectbox('',df.columns[1:])
      selected_data = df[[fixed_column,selected_region]]
-     st.dataframe(selected_data)
+     selected_data = df[[fixed_column, selected_region]].transpose()
+     #height = min(len(selected_data.columns) * 20, 300)
+     st.dataframe(selected_data,height= 110,width=700)
 
      
 
