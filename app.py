@@ -11,9 +11,7 @@ def main() :
 
     choice = st.sidebar.selectbox('메뉴선택', menu)
 
-    df=pd.read_csv('./data/crime.csv', encoding='euc-kr')
-    st.dataframe(df)
-
+   
     st.subheader('통계데이터 확인하기')
 
     if choice == menu[0] :
