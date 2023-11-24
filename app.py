@@ -1,4 +1,5 @@
 import streamlit as st
+from app_eda import run_eda_app
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,7 +18,7 @@ def main() :
     if choice == menu[0] :
         pass
     elif choice == menu[1] :
-        pass
+       run_eda_app()
     elif choice == menu[2] :
         pass
 
