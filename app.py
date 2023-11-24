@@ -5,16 +5,25 @@ import matplotlib.pyplot as plt
 import seaborn as sb
 
 def main() :
-    st.header('경찰청 인천광역시경찰청_관서별 5대범죄 112신고건수 현황')
+    st.title('경찰청 인천광역시경찰청_관서별 5대범죄 112신고건수 현황')
 
-    if st.checkbox('보기'):
-        df=pd.read_csv('./data/crime.csv', encoding='euc-kr')
-        st.dataframe(df)
+    menu=['Home','EDA','ML']
+
+    choice = st.sidebar.selectbox('메뉴선택', menu)
+
+    df=pd.read_csv('./data/crime.csv', encoding='euc-kr')
+    st.dataframe(df)
 
     st.subheader('통계데이터 확인하기')
 
-    if st.checkbox('더보기') :
-        st.dataframe(df.describe())
+    if choice == menu[0] :
+        pass
+    elif choice == menu[1] :
+        pass
+    elif choice == menu[2] :
+        pass
+
+   
 
 if __name__ == '__main__' :
     main()
