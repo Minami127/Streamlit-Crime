@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import numpy as np
+import altair as alt
+
 
 def run_eda_app () :
      
@@ -13,6 +14,36 @@ def run_eda_app () :
      new_first_column_name='범죄 분류'
      df.rename(columns={df.columns[0]: new_first_column_name}, inplace=True)
      st.dataframe(df)
+
+
+
+
+     st.subheader('범죄대분류 보기')
+     df1=pd.read_csv('./data/crime.csv', encoding='euc-kr')
+
+
+     
+
+     new_checkbox =st.checkbox('보기')
+     
+     if new_checkbox :
+          radiohead1=['범죄대분류','범죄소분류']
+          radio1 = st.radio(' ',radiohead1)
+
+          if radio1 == radiohead1[0]:
+               unique_values_col1 = df1.iloc[:, 0].unique()
+               st.write(' ', unique_values_col1)
+
+
+          elif radio1 == radiohead1[1]:
+               grouped_data = {}
+               for value in df1.iloc[:, 0].unique():
+                    grouped_data[value] = df1[df1.iloc[:, 0] == value].iloc[:, 1].tolist()
+
+               st.write('')
+               for key, values in grouped_data.items():
+                    st.write(f"{key}: {values}")
+
      
      st.subheader('기초통계데이터 확인하기')
      if st.checkbox('통계데이터보기') :
@@ -67,30 +98,51 @@ def run_eda_app () :
           fig2 = px.bar(bottom5_selected_column_df, y=selected_column, x=fixed_column, title=f'{selected_column}의 하위 5개 범죄건수')
           st.plotly_chart(fig2)
      
-     st.subheader('범죄대분류 보기','범죄대분류 ')
-     df1=pd.read_csv('./data/crime.csv', encoding='euc-kr')
+    
 
-     radiohead1=['','']
-
-     radio1 = st.radio(' ',radiohead1)
-     
-
-     if radio1 == radiohead1 [0]:
-          st.dataframe(df1)
-     elif radio == radiohead1 [1]:
-          pass
-     
-
-     
      st.subheader('지역별 범죄 건수 비교')
+     
+     df2=pd.read_csv('./data/crime.csv', encoding='euc-kr')
+
+     st.dataframe(df)
+
+     print(df2.columns[1:])
+
+     column_menu = df2.columns[1:]
+
+     choice_list=st.multiselect('지역을 선택하세요',column_menu)
+
+     print(choice_list)
+
+     if len(choice_list) !=0:
+          df2_selected=df[choice_list]
+
+          st.line_chart(data= df2_selected)
+
+          st.area_chart(data= df2_selected)
+     
+     if len(choice_list) !=0:
+          df2_selected=df[choice_list]
+
+          sum_column= df2_selected.sum()
+
+          st.line_chart(data= sum_column)
+
+          st.area_chart(data= sum_column)
+    
+     if len(choice_list) != 0:
+
+          df2_selected = df2[choice_list]
 
 
+          df2_selected.index = df2.iloc[:, 0].tolist()
 
+
+          st.line_chart(data=df2_selected)
+          st.area_chart(data=df2_selected)
 
 
           
-
-
 
 
 if __name__ == '__main__' :
