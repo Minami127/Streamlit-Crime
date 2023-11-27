@@ -114,22 +114,6 @@ def run_eda_app () :
 
      print(choice_list)
 
-     if len(choice_list) !=0:
-          df2_selected=df[choice_list]
-
-          st.line_chart(data= df2_selected)
-
-          st.area_chart(data= df2_selected)
-     
-     if len(choice_list) !=0:
-          df2_selected=df[choice_list]
-
-          sum_column= df2_selected.sum()
-
-          st.line_chart(data= sum_column)
-
-          st.area_chart(data= sum_column)
-    
      if len(choice_list) != 0:
 
           df2_selected = df2[choice_list]
@@ -140,6 +124,17 @@ def run_eda_app () :
 
           st.line_chart(data=df2_selected)
           st.area_chart(data=df2_selected)
+     
+     if len(choice_list) !=0:
+          df2_selected=df[choice_list]
+
+          sum_column= df2_selected.sum()
+
+          st.line_chart(data= sum_column)
+
+          st.area_chart(data= sum_column)
+    
+
 
 
           
