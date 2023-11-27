@@ -7,6 +7,7 @@ def run_eda_app () :
      st.subheader('통계데이터 확인하기')
     
      df=pd.read_csv('./data/crime.csv', encoding='euc-kr')
+     
      df=df.drop(columns=df.columns[0],axis=1)
      new_first_column_name='범죄 분류'
      df.rename(columns={df.columns[0]: new_first_column_name}, inplace=True)
@@ -46,6 +47,26 @@ def run_eda_app () :
           st.dataframe(bottom5_selected_column_df)
           fig2 = px.bar(bottom5_selected_column_df, y=selected_column, x=fixed_column, title=f'{selected_column}의 하위 5개 범죄건수')
           st.plotly_chart(fig2)
+     
+     st.subheader('범죄대분류 보기','범죄대분류 ')
+     df1=pd.read_csv('./data/crime.csv', encoding='euc-kr')
+
+     radiohead1=['','']
+
+     radio1 = st.radio(' ',radiohead1)
+     
+
+     if radio1 == radiohead1 [0]:
+          pass
+     elif radio == radiohead1 [1]:
+          pass
+     
+
+     
+     st.subheader('지역별 범죄 건수 비교')
+
+
+
           
 
 

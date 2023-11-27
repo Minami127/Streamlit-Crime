@@ -13,7 +13,7 @@ if platform.system() == 'Linux':
 def main() :
     st.title('경찰청 범죄 발생 지역별 통계')
 
-    menu=['Home','EDA','ML']
+    menu=['Home','EDA']
 
     choice = st.sidebar.selectbox('메뉴선택', menu)
 
