@@ -22,8 +22,7 @@ def main() :
         run_home_app()
     elif choice == menu[1] :
         run_eda_app()
-    elif choice == menu[2] :
-        pass
+    
 
 
    
