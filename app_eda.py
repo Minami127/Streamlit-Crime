@@ -7,9 +7,6 @@ def run_eda_app () :
      st.subheader('통계데이터 확인하기')
     
      df=pd.read_csv('./data/crime.csv', encoding='euc-kr')
-     df=df.drop(columns=df.columns[0],axis=1)
-     new_first_column_name='범죄 분류'
-     df.rename(columns={df.columns[0]: new_first_column_name}, inplace=True)
      st.dataframe(df)
      
      st.subheader('기초통계데이터 확인하기')
@@ -27,29 +24,35 @@ def run_eda_app () :
      radio = st.radio('',radiohead)
 
      column_list=df.columns[1 : ]
-     selected_column=st.selectbox('', column_list)
+     
      
      pd.set_option('display.max_colwidth', None)
 
      if radio == radiohead[0] :
-          selected_region = st.selectbox('',df.columns[1:])
+          selected_region = st.selectbox('',df.columns[1:],)
           selected_data = df[[fixed_column,selected_region]]
           selected_data = df[[fixed_column, selected_region]].transpose()
           st.dataframe(selected_data)
+          st.text_input('지역을 입력하세요')
      elif radio == radiohead[1] :
+          selected_column=st.selectbox('', column_list)
           top5_selected_column_df = df.nlargest(5, selected_column)[[fixed_column, selected_column]]
           st.dataframe(top5_selected_column_df)
-          fig1 = px.pie(top5_selected_column_df, values=selected_column, names=fixed_column, title=f'{selected_column}의 상위 5개 범죄건수 ')
+          fig1 = px.bar(top5_selected_column_df, x=fixed_column, y=selected_column, title=f'{selected_column}의 상위 5개 범죄건수 ')
           st.plotly_chart(fig1)
      elif radio == radiohead[2] :
+          selected_column=st.selectbox('', column_list)
           bottom5_selected_column_df = df.nsmallest(5, selected_column)[[fixed_column, selected_column]]
           st.dataframe(bottom5_selected_column_df)
-          fig2 = px.pie(bottom5_selected_column_df, values=selected_column, names=fixed_column, title=f'{selected_column}의 하위 5개 범죄건수')
+          fig2 = px.bar(bottom5_selected_column_df,x=fixed_column, y=selected_column, title=f'{selected_column}의 하위 5개 범죄건수')
           st.plotly_chart(fig2)
           
 
 
-     st.header('지역별 신고건수 비교하기')
+
+
+
+
 
 
 if __name__ == '__main__' :
