@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import numpy as np
 
 def run_eda_app () :
      
@@ -19,6 +20,24 @@ def run_eda_app () :
      else :
           st.text('')
      
+     region=st.text_input('지역: ')
+
+     fixed_column = df.columns[0]
+     matching_columns = [col for col in df.columns[1:] if region.lower() in col.lower()]
+
+     if matching_columns:
+          fixed_column_df = df[[fixed_column]]
+    
+          selected_columns_df = df[matching_columns]
+
+          result_df = pd.concat([fixed_column_df, selected_columns_df], axis=1)
+          result_df.set_index(fixed_column, inplace=True)
+
+          st.dataframe(result_df)
+     else:
+          st.text('데이터가 없습니다.')
+
+
      radiohead=['지역별 범죄건수', '지역별 상위 5개 범죄','지역별 하위 5개 범죄']
      
      fixed_column = '범죄 분류'
@@ -57,13 +76,15 @@ def run_eda_app () :
      
 
      if radio1 == radiohead1 [0]:
-          pass
+          st.dataframe(df1)
      elif radio == radiohead1 [1]:
           pass
      
 
      
      st.subheader('지역별 범죄 건수 비교')
+
+
 
 
 
