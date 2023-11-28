@@ -45,7 +45,6 @@ def run_eda_app () :
                     st.write(f"{key}: {values}")
 
      
-     st.subheader('기초통계데이터 확인하기')
 
      st.subheader('지역별 범죄 건수')
      
