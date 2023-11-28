@@ -46,12 +46,10 @@ def run_eda_app () :
 
      
      st.subheader('기초통계데이터 확인하기')
-     if st.checkbox('통계데이터보기') :
-          st.dataframe(df.describe())
-     else :
-          st.text('')
+
+     st.subheader('지역별 범죄 건수')
      
-     region=st.text_input('지역: ')
+     region=st.text_input('검색해서 찾기')
 
      fixed_column = df.columns[0]
      matching_columns = [col for col in df.columns[1:] if region.lower() in col.lower()]
@@ -103,8 +101,10 @@ def run_eda_app () :
      st.subheader('지역별 범죄 건수 비교')
      
      df2=pd.read_csv('./data/crime.csv', encoding='euc-kr')
-
-     st.dataframe(df)
+     if st.checkbox('데이터 보기') :
+          st.dataframe(df)
+     else :
+          st.text('')
 
      print(df2.columns[1:])
 
@@ -125,14 +125,6 @@ def run_eda_app () :
           st.line_chart(data=df2_selected)
           st.area_chart(data=df2_selected)
      
-     if len(choice_list) !=0:
-          df2_selected=df[choice_list]
-
-          sum_column= df2_selected.sum()
-
-          st.line_chart(data= sum_column)
-
-          st.area_chart(data= sum_column)
     
 
 
