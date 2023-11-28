@@ -18,7 +18,7 @@ def run_eda_app () :
 
 
 
-     st.subheader('범죄대분류 보기')
+     st.text('범죄대분류 보기')
      df1=pd.read_csv('./data/crime.csv', encoding='euc-kr')
 
 
