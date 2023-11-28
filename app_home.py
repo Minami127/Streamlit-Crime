@@ -4,5 +4,6 @@ def run_home_app () :
     img_url = 'https://dimg.donga.com/wps/NEWS/IMAGE/2023/08/30/120928365.1.jpg'
     st.image(img_url,width=500)
     st.write('2015년 대한민국 주요도시 범죄 발생 지역별 통계입니다.')
+    st.text('데이터 출처 : https://www.data.go.kr/data/3074462/fileData.do')
 if __name__ == '__main__' :
     main()
