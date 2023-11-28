@@ -10,12 +10,20 @@ def run_eda_app () :
     
      df=pd.read_csv('./data/crime.csv', encoding='euc-kr')
      
+     
+
+     
      df=df.drop(columns=df.columns[0],axis=1)
      new_first_column_name='범죄 분류'
      df.rename(columns={df.columns[0]: new_first_column_name}, inplace=True)
      st.dataframe(df)
+     
+     count_1=df.shape[1]
+     count=df.iloc[:, 1].count()
+     st.text('')
+     
 
-
+    
 
 
      st.text('범죄대분류 보기')
