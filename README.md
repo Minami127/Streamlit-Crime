@@ -2,4 +2,6 @@
 
 使用ツールはpythonをベースでpandasとaltair,matplotlib,streamlitです
 
+http://ec2-43-201-95-29.ap-northeast-2.compute.amazonaws.com:8501/
+
 
